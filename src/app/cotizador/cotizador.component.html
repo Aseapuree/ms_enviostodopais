@@ -1,0 +1,35 @@
+<section id="cotizador">
+    <h2>Cotizador</h2>
+    <div id="contenedor-cotizador">
+        <div id="formulario-cotizador">
+            <form id="form-cotizador">
+                <label for="origen">Origen:</label>
+                <input type="text" id="origen" name="origen" required>
+
+                <label for="destino">Destino:</label>
+                <input type="text" id="destino" name="destino" required>
+
+                <label for="peso">Peso del paquete (kg):</label>
+                <input type="number" id="peso" name="peso" required>
+
+                <label for="tipo-envio">Tipo de envío:</label>
+                <select id="tipo-envio" name="tipo-envio">
+                    <option value="estandar">Estándar</option>
+                    <option value="express">Express</option>
+                </select>
+
+                <button type="submit">Calcular</button>
+            </form>
+        </div>
+        <div id="imagen-cotizador">
+            <img src="assets/img/cotizacion.png" alt="Imagen descriptiva" />
+        </div>
+    </div>
+    <div id="resultado">
+        <p>Total estimado: $0.00</p>
+    </div>
+</section>
+
+/* 
+assets/img/cotizacion.png
+*/

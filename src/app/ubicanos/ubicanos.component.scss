@@ -1,0 +1,58 @@
+#ubicanos {
+    padding: 20px;
+    background-color: #f9f9f9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+    /*background-image: url('assets/imagen-fondo.png');*/
+    background-repeat: no-repeat;
+    background-position: right;
+    background-size: contain;
+  }
+  
+  .form-container {
+    text-align: center;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    width: 350px;
+  }
+  
+  h1 {
+    font-size: 22px;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  select, button {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+  
+  button {
+    background-color: #ffcc33;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: #ffaa00;
+  }
+  
+  button:last-child {
+    margin-top: 10px;
+    background-color: #ffa726;
+  }

@@ -1,0 +1,45 @@
+<section id="ubicanos" class="component">
+    <div class="form-container">
+        <h1>UBICA NUESTRAS TIENDAS</h1>
+        <form id="location-form">
+            <select id="departamento" name="departamento" (change)="onDepartamentoChange()">
+                <option value="" disabled selected>Departamento</option>
+                <option *ngFor="let dep of departamentos" [value]="dep.nombre">{{ dep.nombre }}</option>
+            </select>
+
+            <select id="provincia" name="provincia" (change)="onProvinciaChange()" [disabled]="!provincias.length">
+                <option value="" disabled selected>Provincia</option>
+                <option *ngFor="let prov of provincias" [value]="prov.nombre">{{ prov.nombre }}</option>
+            </select>
+
+            <select id="distrito" name="distrito" [disabled]="!distritos.length">
+                <option value="" disabled selected>Distrito</option>
+                <option *ngFor="let dist of distritos" [value]="dist.nombre">{{ dist.nombre }}</option>
+            </select>
+
+            <button type="button" id="buscar">BUSCAR</button>
+        </form>
+        <button id="ver-mapa">VER MAPA</button>
+    </div>
+</section>
+
+
+<!--<section id="ubicanos" class="component">
+    <div class="form-container">
+        <h1>UBICA NUESTRAS TIENDAS</h1>
+        <form id="location-form">
+            <select id="departamento" name="departamento">
+                <option value="" disabled selected>Departamento</option>
+            </select>
+            <select id="provincia" name="provincia" disabled>
+                <option value="" disabled selected>Provincia</option>
+            </select>
+            <select id="distrito" name="distrito" disabled>
+                <option value="" disabled selected>Distrito</option>
+            </select>
+            <button type="button" id="buscar">BUSCAR</button>
+        </form>
+        <button id="ver-mapa">VER MAPA</button>
+    </div>
+</section>
+ -->

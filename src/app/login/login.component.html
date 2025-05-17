@@ -1,0 +1,19 @@
+<!--section class="login-container">
+    <h2>Iniciar Sesión</h2>
+    <form (ngSubmit)="onLogin()" #loginForm="ngForm">
+      <label>
+        Usuario:
+        <input type="text" name="usuario" [(ngModel)]="usuario" required />
+      </label>
+  
+      <label>
+        Contraseña:
+        <input type="password" name="contrasena" [(ngModel)]="contrasena" required />
+      </label>
+  
+      <button type="submit" [disabled]="loginForm.invalid">Ingresar</button>
+    </form>
+  
+    <p *ngIf="error" class="error">Usuario o contraseña incorrectos.</p>
+  </section>
+  

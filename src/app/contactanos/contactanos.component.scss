@@ -1,0 +1,34 @@
+#contacto {
+    text-align: center;
+    margin: 20px 0;
+}
+
+#form-contacto {
+    display: flex;
+    flex-direction: column;
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 20px;
+    border: 1px solid #ddd;
+}
+
+#form-contacto label {
+    margin-top: 10px;
+    text-align: left;
+}
+
+#form-contacto input, 
+#form-contacto textarea, 
+#form-contacto button {
+    margin: 10px 0;
+    padding: 10px;
+    width: 100%;
+}
+
+.informacion-contacto {
+    background-color: #eee;
+    padding: 15px;
+    margin: 20px 0;
+    text-align: left;
+}
