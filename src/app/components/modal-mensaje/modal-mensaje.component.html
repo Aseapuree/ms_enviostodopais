@@ -1,0 +1,27 @@
+<div class="modal-backdrop" *ngIf="visible">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">{{ titulo }}</h5>
+        <button type="button" class="btn-close" (click)="onCerrar()"></button>
+      </div>
+  
+      <div class="modal-body">
+        <ng-container *ngIf="success; else errorTpl">
+          <i class="bi bi-check-circle-fill icon-success"></i>
+          <p>{{ mensaje }}</p>
+          <p class="codigo">📦 {{ codigoTracking }}</p>
+          <p class="estado">Estado: {{ estado }}</p>
+        </ng-container>
+  
+        <ng-template #errorTpl>
+          <i class="bi bi-x-circle-fill icon-error"></i>
+          <p>{{ mensaje }}</p>
+        </ng-template>
+      </div>
+  
+      <div class="modal-footer text-center">
+        <button class="btn btn-accent" (click)="onCerrar()">Cerrar</button>
+      </div>
+    </div>
+  </div>
+  

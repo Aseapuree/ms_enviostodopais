@@ -1,0 +1,84 @@
+
+  <section class="hero-section text-center py-5">
+    <h1 class="display-4 fw-bold text-accent">📦 Lista de Envíos</h1>
+    <p class="lead text-light mt-2">
+      Consulta el estado y detalles de tus envíos registrados
+    </p>
+  </section>
+
+  <!-- 🔹 Contenido principal -->
+  <section class="container my-4">
+    <div class="card envios-card p-4 shadow-lg rounded-4">
+      <div class="table-responsive">
+        <table class="table table-dark table-hover align-middle envios-table">
+          <thead>
+            <tr>
+              <th class="col-tracking">Tracking</th>
+              <th class="col-emisor">Emisor</th>
+              <th class="col-receptor">Receptor</th>
+              <th class="col-destino">Destino</th>
+              <th class="col-estado">Estado</th>
+              <th class="col-acciones text-center">Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let shipment of shipments" class="fila-envio">
+              <td class="fw-semibold text-accent">{{ shipment.codigoTracking }}</td>
+              <td>{{ shipment.emisorNombre || '—' }}</td>
+              <td>{{ shipment.receptorNombre }}</td>
+              <td class="text-truncate" title="{{ shipment.destino?.nombre }}">
+                {{ shipment.destino?.nombre }}
+              </td>
+              <td>
+                <span
+                  class="badge"
+                  [ngClass]="{
+                    'bg-warning text-dark': shipment.estado === 'En tránsito',
+                    'bg-success': shipment.estado === 'Entregado',
+                    'bg-secondary': shipment.estado === 'Pendiente'
+                  }"
+                >
+                  {{ shipment.estado }}
+                </span>
+              </td>
+              <td class="text-center">
+                <button
+                  class="btn btn-accent btn-sm rounded-pill px-3"
+                  (click)="verDetalles(shipment)"
+                >
+                  <i class="bi bi-eye"></i> Ver
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- 🔹 Modal Angular -->
+  <div class="custom-modal-backdrop" *ngIf="mostrarModal"></div>
+
+  <div class="custom-modal" *ngIf="mostrarModal">
+    <div class="custom-modal-content rounded-4 shadow-lg p-4">
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <h4 class="text-accent fw-bold mb-0">Detalles del Envío</h4>
+        <button class="btn-close" (click)="cerrarModal()"></button>
+      </div>
+
+      <div *ngIf="selectedShipment">
+        <p><strong>Código de Seguimiento:</strong> {{ selectedShipment.codigoTracking }}</p>
+        <p><strong>Receptor:</strong> {{ selectedShipment.receptorNombre }}</p>
+        <p><strong>Emisor:</strong> {{ selectedShipment.emisorNombre || '—' }}</p>
+        <p><strong>Destino:</strong> {{ selectedShipment.destino?.nombre }}</p>
+        <p><strong>Estado:</strong> 
+          <span class="badge bg-info text-dark">{{ selectedShipment.estado }}</span>
+        </p>
+        <p><strong>Fecha Estimada:</strong> {{ selectedShipment.fechaEstimada | date:'mediumDate' }}</p>
+      </div>
+
+      <div class="text-end mt-4">
+        <button class="btn btn-secondary rounded-pill px-4" (click)="cerrarModal()">Cerrar</button>
+      </div>
+    </div>
+  </div>

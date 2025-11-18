@@ -1,119 +1,146 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container">
-        <a class="navbar-brand" href="#">Envios Todo País</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav mx-auto text-center">
-                <li class="nav-item active">
-                    <div class="nav-icon">
-                        <img class="img-fluid" src="assets/img/paquete.png" alt="" width="30" height="30">
-                    </div>
-                    <div>
-                        <a class="nav-link" id="slogan">SEGURIDAD EN CADA ENVIO</a>
-                    </div>
-                </li>
-                <li class="nav-divider"></li>
-                <li class="nav-item">
-                    <a class="nav-link" target="caja" [routerLink]="['/inicio']">Inicio</a>
-                </li>
-                <li class="nav-divider"></li>
-                <li class="nav-item">
-                    <a class="nav-link" target="caja" [routerLink]="['/ubicanos']">Ubicanos</a>
-                </li>
-                <li class="nav-divider"></li>
-                <li class="nav-item">
-                    <a class="nav-link" target="caja" [routerLink]="['/cotizador']">Cotizador</a>
-                </li>
-                <li class="nav-divider"></li>
-                <li class="nav-item">
-                    <a class="nav-link" target="caja" [routerLink]="['/noticias']">Noticias</a>
-                </li>
-                <li class="nav-divider"></li>
-                <li class="nav-item">
-                    <a class="nav-link" target="caja" [routerLink]="['/contactanos']">Contáctanos</a>
-                </li>
-            </ul>
-        </div>
+<!-- <nav class="navbar navbar-expand-lg fixed-top shadow-sm">
+  <div class="container-fluid px-4">
+    
+    <a class="navbar-brand fw-bold text-accent" routerLink="/">
+      <i class="bi bi-truck"></i> ENVIOS TODO PAÍS
+    </a>
 
-    </div>
-  </nav>
+
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNav"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
   
-<!-- <section id="inicio">
-    <h1>Bienvenido a Envíos Todo País</h1>
-    <p>Tu solución confiable para envíos a nivel nacional.</p>
+    <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
+      <ul class="navbar-nav mx-auto">
+        <li class="nav-item">
+          <a routerLink="/" routerLinkActive="active-link" class="nav-link">Inicio</a>
+        </li>
+        <li class="nav-item">
+          <a routerLink="/ubicanos" routerLinkActive="active-link" class="nav-link">Ubícanos</a>
+        </li>
 
-    <section id="servicios">
-        <h2>Nuestros Servicios</h2>
-        <div class="servicio">
-            <h3>Envíos Rápidos</h3>
-            <p>Ofrecemos servicios de envío rápido a todas las ciudades de nuestro territorio peruano.</p>
-        </div>
-        <div class="servicio">
-            <h3>Seguimiento en Tiempo Real</h3>
-            <p>Rastrea tus paquetes en tiempo real.</p>
-        </div>
-        <div class="servicio">
-            <h3>Empaquetado Seguro</h3>
-            <p>Nos aseguramos de que tus artículos lleguen en excelentes condiciones.</p>
-        </div>
-    </section>
+        <li class="nav-item">
+          <a routerLink="/cotizador" routerLinkActive="active-link" class="nav-link">Cotizador</a>
+        </li>        
 
-    <section id="cta">
-        <h2>¿Listo para enviar?</h2>
-        <p>¡Contáctanos hoy!</p>
-        <button onclick="cargarContenido('cotizador.html', 'ruta-fondo-cotizador.jpg')">Solicitar Cotización</button>
-    </section>
+     
+        <li class="nav-item" *ngIf="isAuthenticated && (userRole === 'Administrador' || userRole === 'Operador')">
+          <a routerLink="/crear-envio" routerLinkActive="active-link" class="nav-link">Gestión de Envíos</a>
+        </li>
 
-    <section id="testimonios">
-        <h2>Lo Que Dicen Nuestros Clientes</h2>
-        <div class="testimonio">
-            <p>"El mejor servicio de envíos que he utilizado. Muy confiables!" - Luis P.</p>
-        </div>
-        <div class="testimonio">
-            <p>"Excelente atención y rapidez en las entregas. ¡Lo recomiendo!" - María L.</p>
-        </div>
-    </section>
-</section> -->
+        <li class="nav-item" *ngIf="isAuthenticated && userRole === 'Cliente'">
+          <a routerLink="/mis-envios" routerLinkActive="active-link" class="nav-link">Mis Envíos</a>
+        </li>
+
+        <li class="nav-item">
+          <a routerLink="/contactanos" routerLinkActive="active-link" class="nav-link">Contáctanos</a>
+        </li>
+      </ul>
+
+     
+      <div class="d-flex align-items-center gap-3">
+        <ng-container *ngIf="isAuthenticated; else loginBtn">
+          <div class="user-chip d-flex align-items-center px-3 py-1 rounded-pill">
+            <i class="bi bi-person-circle me-2"></i>
+            <span>{{ userName }}</span>
+            <small class="ms-2 text-muted">({{ userRole }})</small>
+          </div>
+          <button class="btn btn-logout rounded-pill px-3" (click)="logout()">
+            <i class="bi bi-box-arrow-right"></i> Salir
+          </button>
+        </ng-container>
+
+        <ng-template #loginBtn>
+          <a routerLink="/auth" class="btn btn-accent rounded-pill px-4">
+            <i class="bi bi-door-open"></i> Zona Clientes
+          </a>
+        </ng-template>
+      </div>
+    </div>
+  </div>
+</nav> -->
 
 
 
-<!-- #inicio {
-    padding: 20px;
-    background-color: #f9f9f9;
-}
+<nav class="navbar navbar-expand-lg fixed-top shadow-sm">
+  <div class="container-fluid px-4">
+    <!-- Marca -->
+    <a class="navbar-brand fw-bold text-accent" routerLink="/">
+      <i class="bi bi-truck"></i> ENVIOS TODO PAÍS
+    </a>
 
-h1 {
-    text-align: center;
-    color: #007BFF;
-}
+    <!-- Botón responsive -->
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNav"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-#servicios {
-    display: flex;
-    justify-content: space-around;
-    margin: 20px 0;
-}
+    <!-- Navegación -->
+    <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
+      <ul class="navbar-nav mx-auto">
+        <li class="nav-item">
+          <a routerLink="/" routerLinkActive="active-link" class="nav-link">Inicio</a>
+        </li>
+        <li class="nav-item">
+          <a routerLink="/ubicanos" routerLinkActive="active-link" class="nav-link">Ubícanos</a>
+        </li>
 
-.servicio {
-    text-align: center;
-    width: 30%;
-}
+        <li class="nav-item">
+          <a routerLink="/cotizador" routerLinkActive="active-link" class="nav-link">Cotizador</a>
+        </li>        
 
-#cta {
-    text-align: center;
-    background-color: #e9ecef;
-    padding: 30px;
-    border-radius: 10px;
-}
+        <!-- Solo roles con permiso -->
+        <li class="nav-item" *ngIf="isAuthenticated && (userRole === 'Administrador' || userRole === 'Operador')">
+          <a routerLink="/crear-envio" routerLinkActive="active-link" class="nav-link">Registrar Envio</a>
+        </li>
 
-#testimonios {
-    background-color: #f8f9fa;
-    padding: 20px;
-}
+        
+        <!-- Solo roles con permiso -->
+        <li class="nav-item" *ngIf="isAuthenticated && (userRole === 'Administrador' || userRole === 'Operador')">
+          <a routerLink="/lista-envios" routerLinkActive="active-link" class="nav-link">Listar Envíos</a>
+        </li>
 
-.testimonio {
-    margin: 15px 0;
-    font-style: italic;
-    text-align: center;
-} -->
+        <li class="nav-item" *ngIf="isAuthenticated && userRole === 'Cliente'">
+          <a routerLink="/mis-envios" routerLinkActive="active-link" class="nav-link">Mis Envíos</a>
+        </li>
+
+        <li class="nav-item">
+          <a routerLink="/contactanos" routerLinkActive="active-link" class="nav-link">Contáctanos</a>
+        </li>
+      </ul>
+
+      <!-- Zona derecha -->
+      <div class="d-flex align-items-center gap-3">
+        <ng-container *ngIf="isAuthenticated; else loginBtn">
+          <div class="user-menu position-relative">
+            <button class="btn user-chip" (click)="toggleUserMenu()">
+              <i class="bi bi-person-circle me-2"></i>
+              <span>{{ userName }}</span>
+              <small class="ms-2 text-muted">({{ userRole }})</small>
+              <i class="bi bi-chevron-down ms-2"></i>
+            </button>
+            <div class="user-dropdown" *ngIf="showUserMenu">
+              <button class="dropdown-item" (click)="logout()">Cerrar Sesión</button>
+            </div>
+          </div>
+        </ng-container>
+
+        <ng-template #loginBtn>
+          <a routerLink="/auth" class="btn btn-accent rounded-pill px-4">
+            <i class="bi bi-door-open"></i> Zona Clientes
+          </a>
+        </ng-template>
+      </div>
+    </div>
+  </div>
+</nav>

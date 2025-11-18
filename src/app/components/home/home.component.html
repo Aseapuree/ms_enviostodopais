@@ -1,0 +1,55 @@
+<div *ngIf="!isLoggedIn()" class="hero-wrapper d-flex align-items-center justify-content-center">
+  <div class="overlay"></div>
+
+  <div class="container text-center hero-content">
+    <h1 class="display-4 fw-bold text-light mb-3 animate-fade">ENVIOS TODO PAÍS</h1>
+    <p class="lead text-light mb-5 animate-fade">
+      Entregamos rápido, seguro y a cualquier rincón del Perú.
+    </p>
+
+    <div class="tracking-card p-4 mx-auto shadow-lg animate-fade">
+      <h5 class="mb-3">📦 Rastrea tu envío</h5>
+      <div class="input-group mb-3">
+        <input
+          type="text"
+          [(ngModel)]="trackingCode"
+          class="form-control form-control-lg text-center"
+          placeholder="Ingresa tu código de seguimiento"
+        />
+        <button class="btn btn-accent btn-lg px-4" (click)="buscarEnvio()">Buscar</button>
+      </div>
+
+      <div *ngIf="envioEncontrado" class="envio-card mt-4 text-start">
+        <h6><strong>Código:</strong> {{ envioEncontrado.codigoTracking }}</h6>
+        <p><strong>Estado:</strong> {{ envioEncontrado.estado }}</p>
+        <p><strong>Destino:</strong> {{ envioEncontrado.destino?.nombre || 'No especificado' }}</p>
+      </div>
+    </div>
+
+    <div class="mt-5 animate-fade">
+      <button class="btn btn-outline-light me-3 rounded-pill px-4" (click)="irZonaClientes()">Zona Clientes</button>
+      <a routerLink="/ubicanos" class="btn btn-outline-light rounded-pill px-4">Ubícanos</a>
+    </div>
+  </div>
+</div>
+
+<!-- 👤 Sección privada -->
+<div *ngIf="isLoggedIn()" class="dashboard container text-center mt-5 pt-5">
+  <h2 class="fw-bold mb-2">Bienvenido, {{ user?.correo }}</h2>
+  <p class="text-muted mb-5">Rol: <strong>{{ user?.role }}</strong></p>
+
+  <div *ngIf="user?.role === 'Administrador'" class="d-flex flex-wrap justify-content-center gap-3">
+    <button class="btn btn-primary btn-lg px-4" (click)="router.navigate(['/crear-envio'])">Gestión de Envíos</button>
+    <button class="btn btn-secondary btn-lg px-4" (click)="router.navigate(['/lista-envios'])">Ver Envíos</button>
+    <button class="btn btn-dark btn-lg px-4" (click)="router.navigate(['/usuarios'])">Gestión de Usuarios</button>
+  </div>
+
+  <div *ngIf="user?.role === 'Operador'" class="d-flex flex-wrap justify-content-center gap-3">
+    <button class="btn btn-success btn-lg px-4" (click)="irCrearEnvio()">Registrar Envío</button>
+    <button class="btn btn-outline-secondary btn-lg px-4" (click)="router.navigate(['/lista-envios'])">Lista de Envíos</button>
+  </div>
+
+  <div *ngIf="user?.role === 'Cliente'" class="d-flex flex-wrap justify-content-center gap-3">
+    <button class="btn btn-accent btn-lg px-4" (click)="router.navigate(['/mis-envios'])">Ver mis envíos</button>
+  </div>
+</div>

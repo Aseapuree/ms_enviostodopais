@@ -1,24 +1,31 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Departamento, Distrito,Provincia } from '../shared/models/ubigeo.model'; 
+import { ResponseDto } from '../shared/models/response-dto'; 
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable({ providedIn: 'root' })
 export class UbicacionService {
-  private apiUrl = 'https://api.nubelab.app/ubigeo';
+
+  private base = 'http://localhost:8080/api/ubigeo';
 
   constructor(private http: HttpClient) {}
 
-  getDepartamentos(): Observable<any> {
-    return this.http.get(`${this.apiUrl}/departamentos`);
+  getDepartamentos(): Observable<ResponseDto<Departamento[]>> {
+    return this.http.get<ResponseDto<Departamento[]>>(`${this.base}/departamentos`);
   }
 
-  getProvincias(departamento: string): Observable<any> {
-    return this.http.get(`${this.apiUrl}/provincias/${departamento}`);
+  getProvincias(depCodigo: string): Observable<ResponseDto<Provincia[]>> {
+    return this.http.get<ResponseDto<Provincia[]>>(
+      `${this.base}/provincias`,
+      { params: { departamentoCodigo: depCodigo } }
+    );
   }
 
-  getDistritos(provincia: string): Observable<any> {
-    return this.http.get(`${this.apiUrl}/distritos/${provincia}`);
+  getDistritos(provCodigo: string): Observable<ResponseDto<Distrito[]>> {
+    return this.http.get<ResponseDto<Distrito[]>>(
+      `${this.base}/distritos`,
+      { params: { provinciaCodigo: provCodigo } }
+    );
   }
 }

@@ -1,55 +1,229 @@
-.nav-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 0 15px;
-    transition: all 0.3s ease-in-out;
+// :root {
+//   --accent: #ffb703;
+//   --dark: #1e1e1e;
+//   --light: #f8f9fa;
+// }
+
+// .navbar {
+//   background-color: var(--dark);
+//   padding: 0.75rem 1rem;
+//   transition: all 0.3s ease;
+//   border-bottom: 2px solid rgba(255, 183, 3, 0.3);
+// }
+
+// .navbar-brand {
+//   color: var(--accent) !important;
+//   font-size: 1.25rem;
+//   letter-spacing: 0.5px;
+//   display: flex;
+//   align-items: center;
+//   gap: 8px;
+// }
+
+// .nav-link {
+//   color: var(--light) !important;
+//   font-weight: 500;
+//   transition: all 0.2s ease;
+//   margin: 0 8px;
+//   position: relative;
+
+//   &:hover {
+//     color: var(--accent) !important;
+//   }
+
+//   &.active-link {
+//     color: var(--accent) !important;
+//   }
+
+//   &.active-link::after {
+//     content: "";
+//     position: absolute;
+//     bottom: -6px;
+//     left: 25%;
+//     width: 50%;
+//     height: 2px;
+//     background: var(--accent);
+//     border-radius: 10px;
+//   }
+// }
+
+// .user-chip {
+//   background-color: rgba(255, 255, 255, 0.1);
+//   color: var(--light);
+//   font-size: 0.9rem;
+//   transition: all 0.3s ease;
+
+//   &:hover {
+//     background-color: rgba(255, 255, 255, 0.2);
+//   }
+// }
+
+// .btn-accent {
+//   background-color: var(--accent);
+//   color: var(--dark);
+//   font-weight: 600;
+//   border: none;
+//   transition: all 0.3s ease;
+// }
+
+// .btn-accent:hover {
+//   background-color: #ff9e00;
+//   color: #000;
+// }
+
+// .btn-logout {
+//   background-color: transparent;
+//   color: var(--light);
+//   border: 1px solid rgba(255, 255, 255, 0.3);
+//   transition: 0.3s ease;
+//   font-weight: 500;
+
+//   &:hover {
+//     background-color: rgba(255, 255, 255, 0.1);
+//     color: var(--accent);
+//   }
+// }
+
+// /* Responsive */
+// @media (max-width: 992px) {
+//   .navbar-nav {
+//     text-align: center;
+//     margin-top: 1rem;
+//   }
+
+//   .user-chip {
+//     justify-content: center;
+//     width: 100%;
+//   }
+
+//   .btn-logout {
+//     width: 100%;
+//     margin-top: 0.5rem;
+//   }
+// }
+
+
+
+
+:root {
+  --accent: #ffb703;
+  --dark: #1e1e1e;
+  --light: #f8f9fa;
 }
 
-.nav-icon {
-    margin-bottom: 5px;
+.navbar {
+  background-color: var(--dark);
+  padding: 0.75rem 1rem;
+  transition: all 0.3s ease;
+  border-bottom: 2px solid rgba(255, 183, 3, 0.3);
 }
 
-#slogan {
-    font-weight: bold;
-    color: #0056b3;
-    transition: all 0.3s ease-in-out;
-}
-
-#slogan:hover {
-    text-shadow: 0 0 8px rgba(0, 86, 179, 0.8);
+.navbar-brand {
+  color: var(--accent) !important;
+  font-size: 1.25rem;
+  letter-spacing: 0.5px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .nav-link {
-    font-size: 1rem;
-    color: #333;
-    transition: all 0.3s ease-in-out;
+  color: var(--light) !important;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  margin: 0 15px;
+  position: relative;
+
+  &:hover {
+    color: var(--accent) !important;
+  }
+
+  &.active-link {
+    color: var(--accent) !important;
+  }
+
+  &.active-link::after {
+    content: "";
+    position: absolute;
+    bottom: -6px;
+    left: 25%;
+    width: 50%;
+    height: 2px;
+    background: var(--accent);
+    border-radius: 10px;
+  }
 }
 
-.nav-link:hover {
-    color: #0056b3;
-    font-size: 1.1rem;
-    font-weight: bold;
+.user-chip {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: var(--light);
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+  border: none;
+  padding: 6px 12px;
+  display: flex;
+  align-items: center;
+
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
 }
 
-.nav-divider {
-    width: 1px;
-    background-color: #ccc;
-    height: 30px;
-    margin: 0 10px;
+.user-dropdown {
+  position: absolute;
+  right: 0;
+  top: 100%;
+  background-color: var(--dark);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  min-width: 100%; /* Match the width of the user-chip button */
+  padding: 8px 0;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+
+  .dropdown-item {
+    color: var(--light);
+    padding: 8px 16px;
+    background: none;
+    border: none;
+    width: 100%;
+    text-align: left;
+    transition: background-color 0.2s ease;
+
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+      color: var(--accent);
+    }
+  }
 }
 
-.text-center {
+.btn-accent {
+  background-color: var(--accent);
+  color: var(--dark);
+  font-weight: 600;
+  border: none;
+  transition: all 0.3s ease;
+}
+
+.btn-accent:hover {
+  background-color: #ff9e00;
+  color: #000;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .navbar-nav {
     text-align: center;
-}
+    margin-top: 1rem;
+  }
 
+  .user-chip {
+    justify-content: center;
+    width: 100%;
+  }
 
-
-@media (max-width: 576px) {
-    #slogan {
-        font-size: 0.9rem;
-    }
-    .nav-link {
-        font-size: 0.9rem;
-    }
+  .user-dropdown {
+    position: static;
+    width: 100%;
+  }
 }

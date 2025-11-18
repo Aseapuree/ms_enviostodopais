@@ -1,0 +1,84 @@
+<div class="crear-envio-container py-5">
+  <div class="card envio-card shadow-lg mx-auto p-4 rounded-4">
+    <h3 class="text-center text-accent fw-bold mb-4">Registrar Envío</h3>
+
+    <form [formGroup]="form" (ngSubmit)="crear()" class="row g-3">
+      <!-- RECEPTOR -->
+      <div class="col-md-6">
+        <label class="form-label">Nombre del receptor</label>
+        <input formControlName="receptorNombre" class="form-control" placeholder="Ej: Juan Pérez" />
+        <small class="text-danger" *ngIf="form.get('receptorNombre')?.touched && form.get('receptorNombre')?.invalid">
+          El nombre del receptor es obligatorio.
+        </small>
+      </div>
+
+      <div class="col-md-6">
+        <label class="form-label">DNI del receptor</label>
+        <input formControlName="receptorDni" class="form-control" placeholder="Ej: 76543210" maxlength="8" />
+        <small class="text-danger" *ngIf="form.get('receptorDni')?.touched && form.get('receptorDni')?.invalid">
+          DNI inválido (8 dígitos).
+        </small>
+      </div>
+
+      <!-- TIPO ENTREGA -->
+      <div class="col-md-6">
+        <label class="form-label">Tipo de entrega</label>
+        <select formControlName="tipoEntrega" class="form-select">
+          <option value="SEDE">Entrega en Sede</option>
+          <option value="DOMICILIO">Entrega a Domicilio</option>
+        </select>
+      </div>
+
+      <!-- DESTINO -->
+      <div *ngIf="form.get('tipoEntrega')?.value === 'SEDE'" class="col-md-6">
+        <label class="form-label">Tienda destino</label>
+        <div class="select-wrapper">
+          <select formControlName="destinoId" class="form-select">
+            <option [ngValue]="null">-- Seleccione una tienda --</option>
+            <option *ngFor="let t of tiendas" [ngValue]="t.id">{{ t.nombre }}</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- DOMICILIO -->
+      <div *ngIf="form.get('tipoEntrega')?.value === 'DOMICILIO'" class="col-12">
+        <label class="form-label">Dirección de entrega</label>
+        <input formControlName="direccionEntrega" class="form-control" placeholder="Ej: Calle Los Olivos 123, Lima" />
+        <small class="text-danger" *ngIf="form.get('direccionEntrega')?.touched && form.get('direccionEntrega')?.invalid">
+          La dirección es requerida para entrega a domicilio.
+        </small>
+      </div>
+
+      <!-- EMISOR -->
+      <div class="col-md-6 mt-2">
+        <label class="form-label">Emisor (opcional)</label>
+        <input formControlName="emisorNombre" class="form-control" placeholder="Nombre del emisor" />
+      </div>
+
+      <div class="col-md-6 mt-2">
+        <label class="form-label">Correo del emisor (opcional)</label>
+        <input formControlName="emisorCorreo" type="email" class="form-control" placeholder="correo@ejemplo.com" />
+      </div>
+
+      <!-- BOTÓN -->
+      <div class="col-12 text-center mt-4">
+        <button class="btn btn-accent px-5 py-2" type="submit" [disabled]="form.invalid || isLoading">
+          <span *ngIf="!isLoading"><i class="bi bi-send"></i> Registrar Envío</span>
+          <div *ngIf="isLoading" class="spinner-border spinner-border-sm text-light me-2"></div>
+          {{ isLoading ? 'Registrando...' : '' }}
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
+
+<app-modal-mensaje
+  [visible]="modalVisible"
+  [success]="modalSuccess"
+  [titulo]="modalTitulo"
+  [mensaje]="modalMensaje"
+  [codigoTracking]="modalCodigo"
+  [estado]="modalEstado"
+  (cerrar)="cerrarModal()">
+</app-modal-mensaje>

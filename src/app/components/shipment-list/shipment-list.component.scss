@@ -1,0 +1,95 @@
+.envios-card {
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  color: var(--light-text);
+  border-radius: 16px;
+}
+
+.envios-table th,
+.envios-table td {
+  vertical-align: middle;
+  text-align: center;
+}
+
+.envios-table .col-tracking {
+  width: 15%;
+  min-width: 130px;
+ 
+}
+.envios-table .col-emisor {
+  width: 15%;
+  min-width: 130px;
+ 
+}
+.envios-table .col-receptor {
+  width: 15%;
+  min-width: 130px;
+}
+.envios-table .col-destino {
+  width: 25%;
+  min-width: 180px;
+  max-width: 220px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.envios-table .col-estado {
+  width: 12%;
+  text-align: center;
+}
+.envios-table .col-acciones {
+  width: 12%;
+}
+
+/* 🔹 Modal personalizado */
+.custom-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(2px);
+  z-index: 1040;
+  animation: fadeIn 0.3s ease;
+}
+
+.custom-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1050;
+  animation: fadeIn 0.3s ease;
+}
+
+.custom-modal-content {
+  background: #fff;
+  color: #333;
+  width: 90%;
+  max-width: 600px;
+  border-radius: 20px;
+  padding: 20px;
+  animation: scaleIn 0.25s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

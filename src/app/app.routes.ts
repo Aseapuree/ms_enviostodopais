@@ -1,14 +1,63 @@
 import { Routes } from '@angular/router';
-import { IndexComponent } from './index/index.component';
-import { EnviosComponent } from './envios/envios.component';
-import { UbicanosComponent } from './ubicanos/ubicanos.component';
-import { CotizadorComponent } from './cotizador/cotizador.component';
-import { NoticiasComponent } from './noticias/noticias.component';
-import { ContactanosComponent } from './contactanos/contactanos.component';
-import { InicioComponent}  from './inicio/inicio.component';
-export const routes: Routes = [{
-    path:"", component:IndexComponent}, {path:"envios", component:EnviosComponent}, {path:"ubicanos", component:UbicanosComponent}, 
-    {path:"cotizador", component:CotizadorComponent},
-    {path:"noticias", component:NoticiasComponent},
-    {path:"contactanos", component:ContactanosComponent},
-    {path:"inicio", component:InicioComponent}];
+import { StorageService } from './services/storage.service';
+import { AuthGuard } from './services/auth/auth.guard';
+
+// ✅ Guard reutilizable
+//const isLoggedIn = () => !!new StorageService().getItem('user');
+
+export const routes: Routes = [
+  // Páginas públicas
+  {
+    path: '',
+    loadComponent: () =>
+      import('./components/home/home.component').then(m => m.HomeComponent),
+  },
+  {
+    path: 'auth',
+    loadComponent: () =>
+      import('./components/login/login.component').then(m => m.LoginComponent),
+  },
+  {
+    path: 'ubicanos',
+    loadComponent: () =>
+      import('./components/locate-us/locate-us.component').then(m => m.LocateUsComponent),
+  },
+  {
+    path: 'cotizador',
+    loadComponent: () =>
+      import('./components/cotizador/cotizador.component').then(m => m.CotizadorComponent),
+  },
+  {
+    path: 'noticias',
+    loadComponent: () =>
+      import('./components/noticias/noticias.component').then(m => m.NoticiasComponent),
+  },
+  {
+    path: 'contactanos',
+    loadComponent: () =>
+      import('./components/contact-us/contact-us.component').then(m => m.ContactUsComponent),
+  },
+
+  // Páginas protegidas
+  {
+    path: 'crear-envio',
+    canActivate: [AuthGuard],
+    loadComponent: () =>
+      import('./components/envios/crear-envio/crear-envio.component').then(m => m.CrearEnvioComponent),
+  },
+  {
+    path: 'lista-envios',
+    canActivate: [AuthGuard],
+    loadComponent: () =>
+      import('./components/shipment-list/shipment-list.component').then(m => m.ShipmentListComponent),
+  },
+  {
+    path: 'mis-envios',
+    canActivate: [AuthGuard],
+    loadComponent: () =>
+      import('./components/shipment-list/shipment-list.component').then(m => m.ShipmentListComponent),
+  },
+
+  // Fallback
+  { path: '**', redirectTo: '' },
+];

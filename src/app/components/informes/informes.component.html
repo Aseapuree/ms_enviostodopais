@@ -1,0 +1,29 @@
+<div class="container mt-4">
+    <h2 class="text-accent mb-4">Registro de Informes</h2>
+    <select class="form-control mb-3" [(ngModel)]="selectedClient">
+      <option value="">Seleccione Cliente/Envío</option>
+      <option value="1">Cliente 1</option>
+    </select>
+    <div class="row">
+      <div class="col-md-4">
+        <div class="form-group">
+          <label>Problema</label>
+          <textarea class="form-control" [(ngModel)]="report.problem"></textarea>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="form-group">
+          <label>Acciones Realizadas</label>
+          <textarea class="form-control" [(ngModel)]="report.actions"></textarea>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="form-group">
+          <label>Observaciones</label>
+          <textarea class="form-control" [(ngModel)]="report.observations"></textarea>
+        </div>
+      </div>
+    </div>
+    <button class="btn btn-accent mr-2" (click)="saveDraft()">Grabar</button>
+    <button class="btn btn-primary" (click)="submitReport()">Enviar</button>
+  </div>
