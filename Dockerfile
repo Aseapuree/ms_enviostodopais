@@ -8,5 +8,5 @@ RUN npm run build
     
 # ---------- Runtime ----------
 FROM nginx:alpine
-COPY --from=build /app/dist /usr/share/nginx/html
+COPY --from=build /app/dist/browser /usr/share/nginx/html
 EXPOSE 80    
