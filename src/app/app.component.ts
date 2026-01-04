@@ -14,12 +14,8 @@ import { isPlatformBrowser } from '@angular/common';
 })
 export class AppComponent{
   title = 'enviostodopais';
-  //constructor (private maestra: MaestraService){}
-  constructor(@Inject(PLATFORM_ID) platformId: Object) {
-    if (isPlatformBrowser(platformId)) {
-      import('bootstrap/dist/js/bootstrap.bundle.min.js');
-    }
-  }
+  constructor (private maestra: MaestraService){}
+
  /* ngOnInit() {console.log("datos: ", this.maestra.finMaestraPrueba())
     
   }*/
